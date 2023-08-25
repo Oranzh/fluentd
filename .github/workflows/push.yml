@@ -1,11 +1,13 @@
 name: docker-compose-action-workflow
 on: push
 jobs:
-  test:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build the task
-        run: docker-compose up -d
-
-
+        run: docker-compose -f docker-compose.yml up -d
+      - name: check out the logs
+        run: sleep 60 && tree
+      - name: Stop the task
+        run: docker-compose  -f docker-compose.yml down
