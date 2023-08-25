@@ -8,6 +8,6 @@ jobs:
       - name: Build the task
         run: docker-compose -f docker-compose.yml up --build -d
       - name: check out the logs
-        run: sleep 30 && tree
+        run: sleep 60 && tree
       - name: Stop the task
         run: docker-compose  -f docker-compose.yml down
